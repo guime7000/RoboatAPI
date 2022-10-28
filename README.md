@@ -8,13 +8,15 @@ But I wanted to be able to follow my ancient opponents, who qualified, during th
 
 So I built this quite rustic API to retrieve Roboats informations and visualize their position on a folium map...
 
-See this simple project as a discovery of fastAPI...
+See this simple project as a discovery of fastAPI...Probably a lot to do to get a cleaner solution....but i works
 
 # Requirements
 
-Nothing more than python 3 and fastAPI
+Nothing more than python 3 and fastAPI.
 
-My API's running using uvicorn...but choose the asgi server you prefer
+No database needed as everything is working on file exchanges.
+
+My API's running using uvicorn...but choose the asgi server you prefer.
 
 # How is it working ?
 
