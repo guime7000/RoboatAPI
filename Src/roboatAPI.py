@@ -39,6 +39,7 @@ GET /archives/<name of the boat> : to retrieve all the history (since the beginn
 boatsDirectoryPath = '/somewhere_on_your_computer/Boats/'
 archiveDirectoryPath = '/somewhere_on_your_computer/Archives/'
 logsDirectoryPath = '/where_you_want/Logs/'
+tempo = 300 # time delay between two possible posts in seconds
 
 # Log files config 
 logging.getLogger('').setLevel(logging.DEBUG)
@@ -153,6 +154,13 @@ async def position(boatInfos : BoatPos):
                 "twa" : boatInfos.inTwa,
                 "heading" : boatInfos.inHeading
                 }
+
+        with open(lastPositionFile,'r') as timeCheckFile :
+            lastPost = json.load(timeCheckFile)
+        
+        if (boatInfos.inTs - lastPost[0]["ts"]) < (tempo -2) :
+            postLogger.info(f"[ERROR] : {boatInfos.inName} tried to post before the time delay of {tempo} seconds expired")
+            raise HTTPException(status_code = 409, detail=f"POST frequency is too small (you can post only once every {tempo} seconds)")
 
         updatedDict = []
         with open(archivePositionFile, 'r') as inFile:
