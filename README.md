@@ -34,14 +34,13 @@ Then load environment variables in your shell:
 source .env
 ```
 
-
 # How is it working ?
 
 First of all, you'll need to execute the 2 scripts in the Tools directory to initalize your folders :
-  * positionFiles_initial_creator.py will create the default files for each Roboat
-  * archiveFiles_initial_creator.py will create the files for Archiving position
+  * `positionFiles_initial_creator.py` will create the default files for each Roboat
+  * `archiveFiles_initial_creator.py` will create the files for Archiving position
 
-Second : Be sure to execute the secret_json_creator.py (after editing it) in the Secret directory. This will generate a JSON file used to quite rusticaly secure the POST method access of the API.
+Second : Be sure to execute the `secret_json_creator.py` (after editing it) in the `Secret` directory. This will generate a JSON file used to quite rusticaly secure the POST method access of the API.
 
 I know this is not very secure, I know there are other solutions (jwt, oAuth..) but I'm discovering fastAPI and the timing for putting all this together is quite short...
 
