@@ -15,7 +15,7 @@ logging.basicConfig(
     filename=logFilePath, encoding="utf-8", level=logging.INFO, format=logFormat
 )
 
-boatsDirectoryPath = "/var/www/api/Boats/"
+boatsDirectoryPath = os.getenv("BOATS_DIRECTORY_PATH", "./Boats/")
 fleetDirectoryPath = "/var/www/api/Boats/fleet/"
 
 fleetList = [

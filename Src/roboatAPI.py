@@ -9,19 +9,19 @@ from pydantic import BaseModel
 """
 Simple API to retrieve IRoboat positions during the Route du Rhum 2022 on virtual regatta
 
-Each qualified boat sends: 
+Each qualified boat sends:
 
 last calculation timestamp,
 latitude,
-longitude, 
-distanceToEnd, 
-rank, 
-speed, 
-tws, 
+longitude,
+distanceToEnd,
+rank,
+speed,
+tws,
 twa,
 heading
 
-A JSON file for each roboat and a JSON file containing all roboats data are then appended and 
+A JSON file for each roboat and a JSON file containing all roboats data are then appended and
 downloadable
 
 POST /url/boat/position/ : API endpoint to send VR fastinfo call's response
@@ -30,16 +30,19 @@ GET /url/boat/<name of boat>  : to retrieve a JSON file containing one particula
 
 GET /url/fleet : to retrieve a JSON file containing the last known informations of the fleet
 
-GET /archives/<name of the boat> : to retrieve all the history (since the beginning of the race) of transmitted informations for each boat. 
+GET /archives/<name of the boat> : to retrieve all the history (since the beginning of the race) of transmitted informations for each boat.
                                     If <name of the boat> is fleet, then all the history of the fleet is concatenated in a single (big) file
 
 
 """
 
-boatsDirectoryPath = "/somewhere_on_your_computer/Boats/"
-archiveDirectoryPath = "/somewhere_on_your_computer/Archives/"
-logsDirectoryPath = "/where_you_want/Logs/"
+boatsDirectoryPath = os.getenv("BOATS_DIRECTORY_PATH", "./Boats/")
+archiveDirectoryPath = os.getenv("ARCHIVE_DIRECTORY_PATH", "Archives/")
+logsDirectoryPath = os.getenv("LOGS_DIRECTORY_PATH", "Logs/")
 tempo = 300  # time delay between two possible posts in seconds
+
+os.makedirs(archiveDirectoryPath, exist_ok=True)
+os.makedirs(logsDirectoryPath, exist_ok=True)
 
 # Log files config
 logging.getLogger("").setLevel(logging.DEBUG)

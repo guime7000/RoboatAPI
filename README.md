@@ -44,11 +44,11 @@ Second : Be sure to execute the `secret_json_creator.py` (after editing it) in t
 
 I know this is not very secure, I know there are other solutions (jwt, oAuth..) but I'm discovering fastAPI and the timing for putting all this together is quite short...
 
-Third : Run the roboatAPI.py with your favorite asgi server...(after editing the Paths variables in the file ;-)
+Third : Run the `roboatAPI.py` with your favorite asgi server...(after editing the Paths variables in the file ;-)
 
 Last but not least : Run 2 crontab tasks for:
- - archive_fleet.py : archives history of all Roboats informations since the beginning of the race and creates a global fleet file containing all archived Roboats infos
- - concatenate_fleet.py : periodically generates the fleet file with the last known Roboats informations
+ - `archive_fleet.py` : archives history of all Roboats informations since the beginning of the race and creates a global fleet file containing all archived Roboats infos
+ - `concatenate_fleet.py` : periodically generates the fleet file with the last known Roboats informations
 
 # TO DO
 

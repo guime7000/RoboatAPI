@@ -9,13 +9,13 @@ Concatenates all complete Roboats positions files to have fleet history over the
 script ran via a crontab task
 
 """
-logFilePath = "/home/tom/Api/Logs/fleetArchived.log"
+logFilePath = os.getenv("LOG_FILE_PATH", "Logs/fleetArchived.log")
 logFormat = "%(asctime)s %(message)s"
 
 logging.basicConfig(
     filename=logFilePath, encoding="utf-8", level=logging.INFO, format=logFormat
 )
-archiveDirectoryPath = "/var/www/api/Archives/"
+archiveDirectoryPath = os.getenv("ARCHIVE_DIRECTORY_PATH", "Archives/")
 
 fleetList = [
     "groziboat",
