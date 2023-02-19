@@ -36,7 +36,7 @@ GET /archives/<name of the boat> : to retrieve all the history (since the beginn
 
 """
 
-boatsDirectoryPath = os.getenv("BOATS_DIRECTORY_PATH", "./Boats/")
+boatsDirectoryPath = os.getenv("BOATS_DIRECTORY_PATH", "Boats/")
 archiveDirectoryPath = os.getenv("ARCHIVE_DIRECTORY_PATH", "Archives/")
 logsDirectoryPath = os.getenv("LOGS_DIRECTORY_PATH", "Logs/")
 tempo = 300  # time delay between two possible posts in seconds
