@@ -36,7 +36,7 @@ source .env
 
 # How is it working ?
 
-First of all, you'll need to execute the 2 scripts in the Tools directory to initalize your folders :
+First of all, you'll need to execute the 2 scripts in the `Tools` directory to initalize your folders :
   * `positionFiles_initial_creator.py` will create the default files for each Roboat
   * `archiveFiles_initial_creator.py` will create the files for Archiving position
 
@@ -49,6 +49,25 @@ Third : Run the `roboatAPI.py` with your favorite asgi server...(after editing t
 Last but not least : Run 2 crontab tasks for:
  - `archive_fleet.py` : archives history of all Roboats informations since the beginning of the race and creates a global fleet file containing all archived Roboats infos
  - `concatenate_fleet.py` : periodically generates the fleet file with the last known Roboats informations
+
+# Running locally with docker
+
+Build the docker image:
+```bash
+docker-compose build
+```
+
+Setup the default files and archive:
+```bash
+docker-compose run --rm web setup
+```
+
+Run the API:
+```bash
+docker-compose up
+```
+
+The API is then available at [http://localhost:8000](http://localhost:8000).
 
 # TO DO
 
