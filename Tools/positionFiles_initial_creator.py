@@ -34,7 +34,9 @@ dico = {
 }
 
 for inName in fleetList:
-    filePath = os.path.join(boatsDirectoryPath, inName, inName + ".JSON")
+    filedir = os.path.join(boatsDirectoryPath, inName)
+    os.makedirs(filedir, exist_ok=True)
 
+    filePath = os.path.join(filedir, inName + ".JSON")
     with open(filePath, "w+") as outFIle:
         json.dump([dico], outFIle, indent=2)

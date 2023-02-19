@@ -1,12 +1,11 @@
 import json
 import os
-import time
 
 """
 Creates the initial JSON archive file for each roboat and fleet
 """
 
-boatsDirectoryPath = "/somewhere_on_your_computer/Boats/"
+boatsDirectoryPath = os.getenv("BOATS_DIRECTORY_PATH", "./Boats/")
 
 
 fleetList = [
@@ -36,7 +35,9 @@ dico = {
 }
 
 for inName in fleetList:
-    filePath = os.path.join(boatsDirectoryPath, inName, inName + "_Arch.JSON")
+    filedir = os.path.join(boatsDirectoryPath, inName)
+    os.makedirs(filedir, exist_ok=True)
 
+    filePath = os.path.join(filedir, inName + "_Arch.JSON")
     with open(filePath, "w+") as outFIle:
         json.dump([dico], outFIle, indent=2)
