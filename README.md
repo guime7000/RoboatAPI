@@ -18,6 +18,23 @@ No database needed as everything is working on file exchanges.
 
 My API's running using uvicorn...but choose the asgi server you prefer.
 
+## Install dependencies
+
+Install python dependencies from `requirements.txt`:
+```bash
+pip install -r requirements.txt
+```
+
+## Setup environment variables
+
+Copy `env.template` file to `.env` and fill-it with your own variables.
+
+Then load environment variables in your shell:
+```bash
+source .env
+```
+
+
 # How is it working ?
 
 First of all, you'll need to execute the 2 scripts in the Tools directory to initalize your folders :
