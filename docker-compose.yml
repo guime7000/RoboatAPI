@@ -1,0 +1,13 @@
+---
+version: "3"
+
+services:
+  web:
+    build: .
+    env_file:
+      - web.env
+    volumes:
+      - .:/code
+      - ./data:/data
+    ports:
+      - "8000:8000"

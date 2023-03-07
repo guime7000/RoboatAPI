@@ -18,21 +18,56 @@ No database needed as everything is working on file exchanges.
 
 My API's running using uvicorn...but choose the asgi server you prefer.
 
+## Install dependencies
+
+Install python dependencies from `requirements.txt`:
+```bash
+pip install -r requirements.txt
+```
+
+## Setup environment variables
+
+Copy `env.template` file to `.env` and fill-it with your own variables.
+
+Then load environment variables in your shell:
+```bash
+source .env
+```
+
 # How is it working ?
 
-First of all, you'll need to execute the 2 scripts in the Tools directory to initalize your folders :
-  * positionFiles_initial_creator.py will create the default files for each Roboat
-  * archiveFiles_initial_creator.py will create the files for Archiving position
+First of all, you'll need to execute the 2 scripts in the `Tools` directory to initalize your folders :
+  * `positionFiles_initial_creator.py` will create the default files for each Roboat
+  * `archiveFiles_initial_creator.py` will create the files for Archiving position
 
-Second : Be sure to execute the secret_json_creator.py (after editing it) in the Secret directory. This will generate a JSON file used to quite rusticaly secure the POST method access of the API.
+Second : Be sure to execute the `secret_json_creator.py` (after editing it) in the `Secret` directory. This will generate a JSON file used to quite rusticaly secure the POST method access of the API.
 
 I know this is not very secure, I know there are other solutions (jwt, oAuth..) but I'm discovering fastAPI and the timing for putting all this together is quite short...
 
-Third : Run the roboatAPI.py with your favorite asgi server...(after editing the Paths variables in the file ;-)
+Third : Run the `roboatAPI.py` with your favorite asgi server...(after editing the Paths variables in the file ;-)
 
 Last but not least : Run 2 crontab tasks for:
- - archive_fleet.py : archives history of all Roboats informations since the beginning of the race and creates a global fleet file containing all archived Roboats infos
- - concatenate_fleet.py : periodically generates the fleet file with the last known Roboats informations
+ - `archive_fleet.py` : archives history of all Roboats informations since the beginning of the race and creates a global fleet file containing all archived Roboats infos
+ - `concatenate_fleet.py` : periodically generates the fleet file with the last known Roboats informations
+
+# Running locally with docker
+
+Build the docker image:
+```bash
+docker-compose build
+```
+
+Setup the default files and archive:
+```bash
+docker-compose run --rm web setup
+```
+
+Run the API:
+```bash
+docker-compose up
+```
+
+The API is then available at [http://localhost:8000](http://localhost:8000).
 
 # TO DO
 
